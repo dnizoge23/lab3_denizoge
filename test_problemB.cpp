@@ -2,22 +2,19 @@
 #include "lab3_problemB.h"
 
 int main() {
-    // Case 1: no cycle
     Node* a = new Node{1, nullptr};
     Node* b = new Node{2, nullptr};
     Node* c = new Node{3, nullptr};
     a->next = b;
-    b->next = c;
 
     std::cout << "Test 1: "
-              << (hasCycle(a) ? "true" : "false")
-              << " (expected false)\n";
+              << length(a) 
+              << " (expected 2)\n";
 
-    // Case 2: cycle exists
-    c->next = b; // create a cycle
+    b->next = c;
     std::cout << "Test 2: "
-              << (hasCycle(a) ? "true" : "false")
-              << " (expected true)\n";
+              << length(a)
+              << " (expected 3)\n";
 
     return 0;
 }
