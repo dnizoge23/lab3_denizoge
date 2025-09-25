@@ -1,0 +1,22 @@
+#include "lab3_problemA.h"
+
+int longestIncreasingSubarray(int* arr, int size) {
+    if (!arr || size <= 0) return 0;
+
+    int best = 1;   
+    int cur  = 1; 
+
+    for (int i = 1; i < size; ++i) {
+        if (arr[i] > arr[i - 1]) {
+            ++cur;               
+        } else {
+            if (cur > best) best = cur;
+            cur = 1;           
+        }
+    }
+
+    if (cur > best) best = cur;
+    return best;
+}
+
+

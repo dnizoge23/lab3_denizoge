@@ -1,6 +1,5 @@
 #include <iostream>
 #include "lab3_problemA.h"
-blah
 int main() {
     int arr1[] = {1, 2, 2, 3, 4};
     int size1 = sizeof(arr1) / sizeof(arr1[0]);
