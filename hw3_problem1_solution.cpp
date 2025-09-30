@@ -26,7 +26,7 @@ Rectangle reflect(Rectangle rectangle, bool reflectOverX, bool reflectOverY) {
         rectangle.bottom_left.x = -rectangle.bottom_left.x;
         rectangle.upper_right.x = -rectangle.upper_right.x;
     }
-
+// trigger test
     // Ensure corners preserve the Rectangle invariant (bottom_left is min, upper_right is max)
     normalize(rectangle);
     return rectangle;
