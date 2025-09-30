@@ -1,0 +1,20 @@
+name: Trigger Central Tests
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Central Test Runner
+        run: |
+          curl -X POST -H "Accept: application/vnd.github.v3+json" \
+               -H "Authorization: token ${{ secrets.TEST_TRIGGER_TOKEN }}" \
+               https://api.github.com/repos/BU-EC327-Fall2025/hw3-tests/dispatches \
+               -d "$(jq -nc \
+                     --arg repo "${{ github.repository }}" \
+                     --arg pr   "${{ github.event.pull_request.number }}" \
+                     --arg head_sha "${{ github.event.pull_request.head.sha }}" \
+                     '{ event_type: "run-tests", client_payload: { repo: $repo, pr: $pr, head_sha: $head_sha } }')"
